@@ -8,10 +8,12 @@ urlpatterns = [
     path('regstd/', views.regStudent, name="regStudent"),
     path('fetch_std',views.retrieveStd, name="fetch_std"),
     path('updatestd/<int:pk>', views.updateStd, name="updateStd"),
-    path('signup/',views.userRegistration,name="sign up"),
+    path('signup/',views.userRegistration,name="signup"),
     path('login/',views.login_view,name="signin"),
     path('logout/',views.logout,name="signout"),
-    path('deleteStd/<int:pk>',views.deleteStd,name="deleteStd")
+    path('deleteStd/<int:pk>',views.deleteStd,name="deleteStd"),
+    path('media/',views.createPerson,name="media")
+
 
 
 ]

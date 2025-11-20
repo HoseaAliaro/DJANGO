@@ -25,15 +25,15 @@
     <header>
         <nav>
           <ul>
-              <li><a href="">HOME</a></li>
-              <li><a href="">ABOUT</a></li>
-              <li><a href="">REGISTERSTUDENT</a></li>
-              <li><a href="">STUDENTDETAILS</a></li>
-              <li><a href="">SIGNUP</a></li>
-              <li><a href="">SIGNIN</a></li>
-
+              <li><a href="{% url 'home' %}">HOME</a></li>
+              <li><a href="{% url 'regStudent' %}">REGISTERSTUDENT</a></li>
+              <li><a href="{% url 'fetch_std' %}">STUDENTDETAILS</a></li>
+              <li><a href="{% url 'signup' %}">SIGNUP</a></li>
+              <li><a href="{% url 'signin' %}">SIGNIN</a></li>
           </ul>
         </nav>
     </header>
+    {% block content %}
+    {% endblock %}
 </body>
 </html>

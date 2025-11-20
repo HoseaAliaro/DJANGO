@@ -99,4 +99,17 @@ def logout_view(request):
     logout(request)
     return redirect('login')
 
+def createPerson(request):
+    if request.method=='POST':
+        name=request.POST.get('name')
+        photo=request.FILES.get('photo')
+        cv=request.FILES.get('cv')
+        person=Person(name=name,profile_pic=photo,cv=cv)
+        person.save()
+        return redirect('home')
+    else:
+        context={'p': Person}
+    return render(request,'MyApp/media.html',context)
+
+
 

@@ -6,8 +6,9 @@
     <title>Document</title>
     <link rel="stylesheet" href="style.css">
 </head>
+{% extends 'MyApp/base.html %'}
 <body>
-    
+    {% block content %}
     <form action="" method="post">
         {% csrf_token %}
         <label for="first_name">firstName</label>
@@ -21,6 +22,7 @@
         <label for="age">age</label>
         <input type="number" name="age" required> <br>
         <button type="submit">submit</button>
-    </form>   
+    </form>
+    {% endblock %}   
 </body>
 </html>
