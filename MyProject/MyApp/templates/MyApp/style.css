@@ -1,0 +1,20 @@
+*{
+  margin: 0px;
+  padding: 0px;
+}
+header {
+  background: linear-gradient(90deg, #004aad, #0077ff);;
+  color: white;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 18px 40px;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+
+  position: fixed;          /* Fix header at top */
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 30px;
+  z-index: 1000;
+}
