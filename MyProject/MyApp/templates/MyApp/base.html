@@ -1,38 +1,32 @@
+{% load static %}
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-    <style>
-        header{
-            display: flex;
-            background-color: blue;
-            text-decoration: none;
-        }
-        ul,li,a{
-            text-align: right;
-            color: aliceblue;
-            text-decoration: none;
-            list-style: none;
-            display: flex;
-            float: right;
-            padding: 10px;
-        }
-    </style>
+    <link rel="stylesheet" href="{% static 'styles/styles.css' %}">
+    <title>Document</title>   
 </head>
 <body>
-    <header>
+    <section class="header">
         <nav>
-          <ul>
-              <li><a href="{% url 'home' %}">HOME</a></li>
-              <li><a href="{% url 'regStudent' %}">REGISTERSTUDENT</a></li>
-              <li><a href="{% url 'fetch_std' %}">STUDENTDETAILS</a></li>
-              <li><a href="{% url 'signup' %}">SIGNUP</a></li>
-              <li><a href="{% url 'signin' %}">SIGNIN</a></li>
-          </ul>
+          <a href=""><img src="" ></a>
+          <div class="nav-links">
+              <ul>
+               {% if user.is_authenticated %}
+               <li><a href="{% url 'home' %}">HOME</a></li>
+               <li><a href="{% url 'regStudent' %}">REGISTERSTUDENT</a></li>
+               <li><a href="{% url 'fetch_std' %}">STUDENTDETAILS</a></li>
+               <li><a href="{% url 'signout' %}">LOG OUT</a></li>
+               {% else %}
+               <li><a href="{% url 'home' %}">HOME</a></li>
+               <li><a href="{% url 'signup' %}">SIGNUP</a></li>
+               <li><a href="{% url 'signin' %}">SIGNIN</a></li>
+               {% endif %}
+              </ul>
+          </div>
         </nav>
-    </header>
+    </section>
     {% block content %}
     {% endblock %}
 </body>

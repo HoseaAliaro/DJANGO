@@ -5,12 +5,14 @@ from . models import *
 from django.contrib.auth.models import User
 from django.contrib.auth import authenticate,login,logout
 from . forms import *
+from django.contrib.auth.decorators import login_required
 
 
 
 # Create your views here.
 def Home(request):
     return render(request,'MyApp/index.html')
+@login_required
 def stdForm(request):
     if request.method=='POST':
         form=StudentForm(request.POST)
@@ -24,6 +26,7 @@ def stdForm(request):
 
 
 #Custom forms
+@login_required
 def regStudent(request):
     if request.method=='POST':
        firstName=request.POST['fname']
@@ -36,13 +39,15 @@ def regStudent(request):
        return HttpResponse('Success')
     else:
         return render (request,'MyApp/student_form.html')
-    
+
+@login_required    
 def retrieveStd(request):
     std_data=Student.objects.all()
     context={'std_data':std_data}
     return render(request,'MyApp/std_details.html',context)
 
 #updating student
+@login_required
 def updateStd(request,pk):
     student=get_object_or_404(Student,pk=pk)
     if request.method=='POST':
@@ -63,6 +68,7 @@ def updateStd(request,pk):
         return render(request, 'MyApp/updateStd.html',context)
     
 #delete data
+@login_required
 def deleteStd(request,pk):
     del_std=get_object_or_404(Student,pk=pk)
     if request.method=='POST':
@@ -70,7 +76,9 @@ def deleteStd(request,pk):
         return redirect('fetch_std')
     
     return render(request,'MyApp/deleteStd.html')
+
 #user authentification
+
 def userRegistration(request):
     if request.method=='POST':
         form=CustomUser(request.POST)
@@ -83,6 +91,7 @@ def userRegistration(request):
     return render(request,'MyApp/regist.html',context)
     
 #user loginfunction
+
 def login_view(request):
     if request.method=='POST':
        username=request.POST.get('username')
@@ -94,11 +103,13 @@ def login_view(request):
             return redirect('fetch_std')
        
     return render(request,'MyApp/login.html')
-    
+
+
 def logout_view(request):
     logout(request)
-    return redirect('login')
+    return redirect('signin')
 
+@login_required
 def createPerson(request):
     if request.method=='POST':
         name=request.POST.get('name')

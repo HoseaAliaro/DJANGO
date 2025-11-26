@@ -5,7 +5,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
 </head>
+{% extends 'MyApp/base.html' %}
 <body>
+    {% block content %}
     <table>
         <thead>Students Details</thead>
         <tr>
@@ -29,5 +31,6 @@
          </tr>
         {%  endfor %}
     </table> 
+    {% endblock %}
 </body>
 </html>
